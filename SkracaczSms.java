@@ -1,3 +1,7 @@
+//Napisz program, który zmiejsza treść SMSa, w celuzaoszczedzenia ilosci znakow nie pisz spacji, kazdy rozpoczynajacy sie wyraz 
+//rozpoczynaj wielkąliterą. Wczytaj SMSa z konsoli w programi (System.in) i tam też wyświetl rezultat.
+
+
 import java.util.Scanner;
 
 public class Main {
