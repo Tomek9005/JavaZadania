@@ -1,0 +1,30 @@
+Nazwiska:
+
+1) Wszystkie nazwiska o d³ugoœci co najwy¿ej 4 znaków, zapisane wielkimi literami
+2) Wszystkie nazwiska zaczynaj¹ce siê na literê 'B'
+3) Pocz¹tkowe trzy litery wszystkich nazwisk, bez powtórzeñ, z ma³ych liter
+4) 10 najd³u¿szych nazwisk, posortowanych malej¹co wed³ug d³ugoœci
+4*) Obs³u¿ miejsca "ex aequo"
+5) 20 najkrótszych nazwisk, posortowanych wed³ug ostatniej litery
+6) Odwróæ kolejnoœæ liter we wszystkich nazwiskach i pozstaw jedynie te, które maj¹ literê 'A' wsród pierwszych trzech liter (odwróconego nazwiska)
+7) Policz, ile jest nazwisk zaczynaj¹cych siê na ka¿d¹ z liter alfabetu (rezultat jako Map<Character, Integer>)
+8*) Jaka litera pojawia siê najczeœciej we wszystkich nazwiskach?
+
+Liczby:
+1) Ile jest liczb parzystych?
+2) Ile jest liczb piêciocyfrowych?
+3) Jaka jest najwiêksza i najmniejsza liczba?
+4) Jaka jest ró¿nica miêdzy najwiêksza a najmniejsz¹ liczb¹?
+5) Jaka jest œrednia wszystkich liczb?
+6*) Jaka jest mediana wszystkich liczb?
+7*) Jaka cyfra pojawia siê najczêœciej we wszystkcih liczbach?
+8*) Ile jest wyst¹pieñ ka¿dej cyfry (rezultat jako Map<Integer, Integer> z kluczami od 0 do 9)
+9) Wypisz wszystkie liczby pierwsze, posortowane rosn¹co
+
+Lorem ipsum:
+1) Ile jest wszystkich s³ów?
+2) Ile s³ów zaczyna siê na literê 'D'?
+3) Policz, ile jest s³ów o danej d³ugoœci (Map<Integer, Integer>)
+4) Jaka litera pojawia siê narzadziej?
+5*) Ile jest s³ów, które posiadaj¹ dwie identyczne litery obok siebie (np. 'g' w "debugger")?
+6**) Ile jest s³ów, które s¹ palindromami?
