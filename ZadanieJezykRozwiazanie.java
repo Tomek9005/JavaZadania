@@ -1,3 +1,5 @@
+//Napisz program, który rozpozna jezyk dokument, do rozpoznania jezyka uzyj serwisu DetectLanguage.com.
+
 package com.sda.rozpoznawanieJezyka;
 
 import com.detectlanguage.DetectLanguage;
