@@ -1,3 +1,5 @@
+//Napisz metodę, ktora sprawdzi, czy podanie w pliku liczby sa pierwsze. Jako wynik wyswietlen, ile z nich jest pierwszych.
+
 package com.sda.liczbypierwsze;
 
 import java.io.File;
