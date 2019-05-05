@@ -1,0 +1,80 @@
+package com.sda.quiz;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+        Map<String, List<ZadanieQuizowe>> pytaniaDlaKategorii = wczytajWszystkieKategorie();
+        List<String> nazwyKategorii = new ArrayList<String>(pytaniaDlaKategorii.keySet());
+        System.out.println("Wybierz kategorię: ");
+        for (int i = 0; i < nazwyKategorii.size(); i++) {
+            String nazwaKategorii = nazwyKategorii.get(i);
+            System.out.println(" " + (i+1) + " > " + nazwaKategorii);
+        }
+        Scanner scanner = new Scanner(System.in);
+        int wybranaKategoria = scanner.nextInt()-1;
+        String nazwaWybranejKategorii = nazwyKategorii.get(wybranaKategoria);
+        System.out.println("Wybrałeś kategorię: " + nazwaWybranejKategorii);
+        List<ZadanieQuizowe> zadaniaDlaWybranejKategorii = pytaniaDlaKategorii.get(nazwaWybranejKategorii);
+        Collections.shuffle(zadaniaDlaWybranejKategorii);
+        int punkty = 0;
+        for (int i = 0; i < 10; i++) {
+            ZadanieQuizowe zadanie = zadaniaDlaWybranejKategorii.get(i);
+            System.out.println("Pytanie: " + zadanie.pytanie);
+            List<String> odpowiedzi = new ArrayList<String>(zadanie.odpowiedzi);
+            String prawidlowaOdpowiedz = odpowiedzi.get(0);
+            Collections.shuffle(odpowiedzi);
+            for (int j = 0; j < odpowiedzi.size(); j++) {
+                String odpowiedz = odpowiedzi.get(j);
+                System.out.println("  Odp " + (j+1) + ") " + odpowiedz);
+            }
+            System.out.println("Wybierz odpowiedź: ");
+            int indeksWybranejOdpowiedzi = scanner.nextInt() - 1;
+            String wybranaOdpowiedz = odpowiedzi.get(indeksWybranejOdpowiedzi);
+            if (wybranaOdpowiedz.equals(prawidlowaOdpowiedz)) {
+                System.out.println("Dobra odpowiedź, zdobyłeś punkt");
+                punkty++;
+            } else {
+                System.out.println("Zła odpowiedź! Dobra to " + prawidlowaOdpowiedz);
+            }
+        }
+        System.out.println("Zdobyłeś " + punkty + "/10 punktów! Gratulacje!");
+    }
+    private static Map<String, List<ZadanieQuizowe>> wczytajWszystkieKategorie() throws FileNotFoundException {
+        File folder = new File("src/main/resources/quiz/");
+        File[] plikiKategorii = folder.listFiles();
+        // Map<NAZWA KATEGORII, LISTA ZADAN QUIZOWYCH>
+        Map<String, List<ZadanieQuizowe>> pytaniaDlaKategorii =
+                new HashMap<String, List<ZadanieQuizowe>>();
+        ArrayList<ZadanieQuizowe> wszystkieZadania = new ArrayList<ZadanieQuizowe>();
+        for (File plikKategorii : plikiKategorii) {
+            List<ZadanieQuizowe> zadaniaDlaKategorii = wczytajListePytan(plikKategorii);
+            String nazwaKategorii = plikKategorii.getName();
+            pytaniaDlaKategorii.put(nazwaKategorii, zadaniaDlaKategorii);
+            wszystkieZadania.addAll(zadaniaDlaKategorii);
+        }
+        pytaniaDlaKategorii.put("Wszystkie", wszystkieZadania);
+        return pytaniaDlaKategorii;
+    }
+    private static List<ZadanieQuizowe> wczytajListePytan(File plikZKategoria) throws FileNotFoundException {
+        Scanner scanner = new Scanner(plikZKategoria);
+        List<ZadanieQuizowe> zadaniaDlaKategorii = new ArrayList<ZadanieQuizowe>();
+        while (scanner.hasNextLine()) {
+            String pytanie = scanner.nextLine();
+            //System.out.println("Pytanie: " + pytanie);
+            String ileOdpowiedzi = scanner.nextLine();
+            int ileOdp = Integer.parseInt(ileOdpowiedzi);
+            List<String> mozliweOdpowiedzi = new ArrayList<String>();
+            for (int i = 0; i < ileOdp; i++) {
+                String jednaOdp = scanner.nextLine();
+                mozliweOdpowiedzi.add(jednaOdp);
+                //System.out.println("Odpowiedź: " + jednaOdp);
+            }
+            ZadanieQuizowe zad = new ZadanieQuizowe();
+            zad.pytanie = pytanie;
+            zad.odpowiedzi = mozliweOdpowiedzi;
+            zadaniaDlaKategorii.add(zad);
+        }
+        return zadaniaDlaKategorii;
+    }
+}
