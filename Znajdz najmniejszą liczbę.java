@@ -1,3 +1,9 @@
+//Napisz metodę, ktora pozwoli znaleźć najmniejszy element w kolekcji typu Integer.
+//Wskazówka: skorzystaj z poniższej definicji metody:
+//public static Integer findMinimum(
+//Collection<Integer>collection){
+//   }
+
 package com.sda.generyki;
 
 import java.util.ArrayList;
